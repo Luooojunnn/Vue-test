@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>template实例</h1>
+    <hr/>
+    <div id="app">
+
+    </div>
+
+    <!--<template id="t2">-->
+        <!--<h2>这是template标签里的模板</h2>-->
+    <!--</template>-->
+
+
+    <script id="t3" type="x-template">
+        <h3>这是写在script标签里的template</h3>
+    </script>
+
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                msg:'Hello world'
+            },
+//            template:`
+//                <h1>我是局部template<br/>{{msg}}</h1>
+//
+//            `,
+//            template:'#t2'
+                template:'#t3'
+        })
+    </script>
+</body>
+</html>

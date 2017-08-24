@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text&v-html</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-text&v-html实例</h1>
+<hr/>
+<div id="app">
+    <span v-text="text"></span>
+    <br/>
+    <div v-html="html"></div>
+</div>
+
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            text:'这是用v-text绑定出来的内容',
+            html:'<em style="color: red">这是用v-html绑定出来的内容</em>'
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Watch</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Watch实例</h1>
+<hr/>
+<div id="app">
+    <p>今日温度:{{temperature}}℃</p>
+    <p>建议穿{{clothes}}</p><br/>
+    <button @click="add">升温</button>
+    <button @click="reduce">降温</button>
+</div>
+
+<script>
+
+    let app = new Vue({
+        el:'#app',
+        data:{
+            temperature:20,
+            clothes:'衬衫'
+        },
+        methods:{
+            add(){
+                return this.temperature++
+            },
+            reduce(){
+                return this.temperature--
+            }
+        },
+        //内部监控
+        watch:{
+            'temperature':function(newvalue,oldvalue){
+                if(newvalue>25){
+                    this.clothes = 'T恤'
+                }else if(newvalue<15){
+                    this.clothes = '棉袄'
+                }else {
+                    this.clothes = '衬衫'
+                }
+                console.log(newvalue +'---'+ oldvalue)
+            }
+        }
+    });
+    //外部监控
+    app.$watch('temperature',function(newvalue,oldvalue){
+        if(newvalue>25){
+            console.log('今日温度太高了')
+        }else if(newvalue<15){
+            console.log('今日温度太低了')
+        }else {
+            console.log('今日温度正合适')
+        }
+    })
+</script>
+</body>
+</html>

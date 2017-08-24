@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-for实例</h1>
+<hr/>
+<div id="app">
+    <ul>
+        <li v-for="item in sortItem">
+            {{item}}
+        </li>
+    </ul>
+    <br/>
+    <ul>
+        <li v-for="(item,index) in sortAge">
+            {{index+1}}---{{item.name}}---{{item.age}}
+        </li>
+    </ul>
+</div>
+
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            items:[1,2,3,30,20,10,123],
+            age:[
+                {name:'zhangsan',age:'23'},
+                {name:'lisi',age:'32'},
+                {name:'wanggoudan',age:'54'},
+                {name:'erya',age:'18'}
+            ],
+            url:'http://mpc-test.syswin.com/api/image/images'
+        },
+        computed:{
+            sortItem(){
+                return this.items.sort(sortArray)
+            },
+            sortAge(){
+                return this.age.sort(sortAge1(this.age,'age'))
+            }
+        }
+    })
+    function sortArray(a,b) {
+        return a-b
+    };
+    function sortAge1(array,key){
+        return array.sort(function (a,b) {
+            let x = a[key];
+            let y = b[key];
+            return x-y
+        })
+
+    }
+</script>
+</body>
+</html>

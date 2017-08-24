@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <script src="../assets/js/vue.js"></script>
+    <style>
+        .red{color:red}
+        .blue{color:blue}
+        .yellow{color: yellow}
+        .size{font-size: 20px}
+    </style>
+</head>
+<body>
+<h1>v-bind实例</h1>
+<hr/>
+<div id="app">
+    绑定class:<span :class="isred">v-bind的实例</span><br/>
+    进行判断,绑定class:<span :class="{blue:ok}">v-bind的实例</span><br/>
+    绑定数组,绑定class:<span :class="[isred,issize]">v-bind的实例</span><br/>
+    三元判断,绑定class:<span :class="num>10?isred:isyellow">v-bind的实例</span><br/>
+    绑定style:<span :style="{color:isred,fontSize:fontsize}">v-bind的实例</span><br/>
+    绑定style对象:<span :style="styleobj">v-bind的实例</span><br/>
+</div>
+
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            isred:'red',
+            isyellow:'yellow',
+            issize:'size',
+            ok:true,
+            num:10,
+            fontsize:'20px',
+            styleobj:{
+                color:'green',
+                'font-size':'30px'
+            }
+        }
+    })
+</script>
+</body>
+</html>

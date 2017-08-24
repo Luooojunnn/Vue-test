@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>声明周期钩子</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>声明周期钩子实例</h1>
+<hr/>
+<div id="app">
+    {{num}}
+    <button @click="add">加1</button>
+</div>
+    <button onclick="app.$destroy()">销毁</button>
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            num:1
+        },
+        methods:{
+            add(){
+                this.num++
+            }
+        },
+        beforeCreated(){
+            console.log('当前在beforeCreated阶段');
+            alert('当前在beforeCreated阶段')
+        },
+        created(){
+            console.log('当前在created阶段');
+            alert('当前在created阶段')
+        },
+        beforeMounted(){
+            console.log('当前在beforeMounted阶段');
+            alert('当前在beforeMounted阶段')
+        },
+        mounted(){
+            console.log('当前在mounted阶段');
+            alert('当前在mounted阶段')
+        },
+        beforeUpdate(){
+            console.log('当前在beforeUpdate阶段');
+            alert('当前在beforeUpdate阶段')
+        },
+        update(){
+            console.log('当前在update阶段');
+            alert('当前在update阶段')
+        },
+        beforeDestroyed(){
+            console.log('当前在beforeDestroyed阶段');
+            alert('当前在beforeDestroyed阶段')
+        },
+        destroyed(){
+            console.log('当前在destroyed阶段');
+            alert('当前在destroyed阶段')
+        }
+
+    })
+</script>
+</body>
+</html>

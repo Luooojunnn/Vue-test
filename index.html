@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2.0实例</title>
+    <script src="./assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue2.0实例</h1>
+    <hr/>
+    <div id="app">
+        <ul>
+            <!--<li><a href="example/helloworld.html">Hello world</a></li>-->
+            <!--<li><a href="example/v-for.html">v-for</a></li>-->
+            <!--<li><a href="example/v-text.html">v-text&v-html</a></li>-->
+            <li v-for="item in pages"><a :href="item.page" v-text="item.name"></a></li>
+        </ul>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                pages:[
+                    {name:'Hello world',page:'example/helloworld.html'},
+                    {name:'v-for',page:'example/v-for.html'},
+                    {name:'v-text&v-html',page:'example/v-text.html'},
+                    {name:'v-on',page:'example/v-on.html'},
+                    {name:'v-model',page:'example/v-model.html'},
+                    {name:'v-bind',page:'example/v-bind.html'},
+                    {name:'v-pre',page:'example/v-pre.html'},
+                    {name:'Vue.directive',page:'example/v-directive.html'},
+                    {name:'Vue.extend',page:'example/v-extend.html'},
+                    {name:'Vue.set',page:'example/v-set.html'},
+                    {name:'Vue.beforeCreated',page:'example/beforeCreated.html'},
+                    {name:'template',page:'example/template.html'},
+                    {name:'component',page:'example/component.html'},
+                    {name:'component-prop',page:'example/component-prop.html'},
+                    {name:'component-父子组件关系',page:'example/component-parent.html'},
+                    {name:'component-组件的切换',page:'example/component-change.html'},
+                    {name:'========================================',page:'javascript:void(0)'},
+                    {name:'propsData的全局扩展的数据传递',page:'example/propsData.html'},
+                    {name:'computed的计算',page:'example/computed.html'},
+                    {name:'methods的方法',page:'example/methods.html'},
+                    {name:'watch的监控',page:'example/watch.html'},
+                    {name:'mixins的混合',page:'example/mixins.html'},
+                    {name:'extends的拓展',page:'example/extends.html'},
+                    {name:'实例入门-实例属性',page:'example/example1.html'},
+                    {name:'实例方法',page:'example/example2.html'},
+                    {name:'实例事件',page:'example/example3.html'},
+                    {name:'solt讲解',page:'example/slot.html'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

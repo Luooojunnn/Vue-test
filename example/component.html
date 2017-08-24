@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Component实例</h1>
+    <hr/>
+    <div id="app">
+        <redfont></redfont>
+        <br/>
+        <bluefont></bluefont>
+        <br/>
+        <pinkfont></pinkfont>
+        <ul>
+            <li is="bluefont"></li>
+        </ul>
+    </div>
+
+    <script>
+        Vue.component('bluefont',{
+            template:'<strong style="color: blue">全局component,用对象完成</strong>'
+        });
+
+        var extendfont = Vue.extend({
+            template:'<i style="color: pink">{{discribe}}</i>',
+            data(){
+                return{
+                    discribe:'全局component,用extend完成'
+                }
+            }
+        })
+        Vue.component('pinkfont',extendfont);
+
+        let app = new Vue({
+            el:'#app',
+            components:{
+                'redfont':{
+                    template:'<em style="color: red">局部component</em>'
+        }
+            }
+        })
+    </script>
+</body>
+</html>

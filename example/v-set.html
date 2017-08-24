@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.set</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.set实例</h1>
+    <hr/>
+    <div id="app">
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+        <button onclick="add()">加一项</button>
+    </div>
+
+    <script>
+        let obj = {
+            arr:['aaa','bbb','ccc','ddd'],
+            new:true
+        }
+        function add(){
+            console.log('add函数运行了');
+//            Vue.set(app.arr,app.arr.length,'new')
+//            app.arr[1]='new'  //无效
+            obj.new  = !obj.new ;
+            Vue.set(app.arr,1,obj.new)
+
+        };
+        let app = new Vue({
+            el:'#app',
+            data:obj
+        })
+    </script>
+</body>
+</html>

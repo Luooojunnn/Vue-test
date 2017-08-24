@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.directive</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Vue.directive实例</h1>
+<hr/>
+<div id="app">
+    <span v-bered="{num:'30',color:'pink'}">{{num}}</span><br/>
+    <button @click="add">加一</button>
+</div>
+
+<script>
+    /*全局自定义指令*/
+    /*    Vue.directive('bered',function(el,binding){
+            console.log(binding.value)
+            el.style = 'color:'+binding.value
+        });*/
+    /*全局自定义指令*/
+
+    let app = new Vue({
+        el:'#app',
+        data:{
+            num:10,
+            red:'red'
+        },
+        methods:{
+            add(){
+                return this.num++
+            }
+        },
+        /*局部自定义指令*/
+        directives:{
+            'bered':{
+                bind(el,binding){
+                    console.log(binding.value);
+                    console.log(binding.name);
+                    console.log(binding.expression);
+                    el.style = 'font-size:'+binding.value.num+'px'+';color:'+binding.value.color
+                },
+                update(){
+                    console.log('进行了update')
+                }
+            }
+        }
+        /*局部自定义指令*/
+    })
+</script>
+</body>
+</html>

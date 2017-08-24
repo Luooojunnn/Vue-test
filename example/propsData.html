@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>propsData</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>propsData实例</h1>
+    <hr/>
+    <propsData></propsData>
+
+    <script>
+        let propsData = Vue.extend({
+            props:['add'],
+            template:`<i>{{msg}}-----{{add}}</i>`,
+            data(){
+                return{
+                    msg:'本次测试propsDate'
+                }
+            }
+        });
+        //propsData的作用主要是方便测试
+        let stg = '我是propsData全局拓展的数据传递过来的';
+        new propsData({propsData:{'add':stg}}).$mount('propsData')
+
+    </script>
+</body>
+</html>

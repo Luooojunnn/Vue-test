@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example1</title>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <h1>Example1结合JQ实例</h1>
+    <hr/>
+    <div id="app">
+        {{msg}}
+
+    </div>
+    <button onclick="show()">实例调用自定义方法</button>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                msg:'Hello world'
+            },
+            //在挂载前数据都是使用的data里边的数据
+            beforeMount(){
+                console.log(this.msg)
+            },
+            mounted(){
+                $('#app').html('我是jq插进来的内容')
+            },
+            methods:{
+                show(){
+                    console.log('我被调用了')
+                }
+            }
+        })
+        function show() {
+            app.show();
+        }
+
+    </script>
+</body>
+</html>

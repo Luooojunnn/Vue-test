@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>computed实例</h1>
+<hr/>
+<div id="app">
+    <span>苹果:{{rmb}}元</span>
+    <p>原始数组是:{{arr}}</p>
+    <p>反转数组是:{{sortArr}}</p>
+    <p>倒序数组是:{{reverseArr}}</p>
+</div>
+
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            price:100,
+            arr:[1,2,3,9,8,7,4,5,6],
+            arr2:[1,2,3,9,8,7,4,5,6],
+            arr3:[1,2,3,9,8,7,4,5,6]
+        },
+        computed:{
+            rmb(){
+                return this.price = '￥'+this.price
+            },
+            sortArr(){
+                return this.arr2.sort(sortArray)
+            },
+            reverseArr(){
+                return this.arr3.reverse()
+            }
+        }
+    });
+    function sortArray(a,b){
+        return a-b
+    }
+</script>
+</body>
+</html>

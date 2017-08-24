@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.extend</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.extend实例</h1>
+    <hr/>
+    <author></author>
+    <div id="app">
+        <author></author>
+    </div>
+
+    <script>
+        let authorTag = Vue.extend({
+            template:'<strong><a :href="url">{{tag}}</a></strong>',
+            data(){
+                return{
+                    url:'http://www.baidu.com',
+                    tag:'百度'
+                }
+            },
+            created(){
+//                alert('')
+                console.log('我在created阶段创建')
+            }
+        })
+        new authorTag().$mount('author')
+//        new authorTag().$mount('#app')
+    </script>
+</body>
+</html>

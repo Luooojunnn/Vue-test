@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>methods实例</h1>
+<hr/>
+<div id="app">
+    <span>{{num}}</span>
+    <button @click="add(num2,$event)">加{{num2}}</button>
+    <input type="number" v-model="num2">
+    <btn @click.native="ntv"></btn>
+</div>
+
+<script>
+    let btn = {
+        template:`<button>我是封装的按钮组件</button>`
+    };
+
+    let app = new Vue({
+        el:'#app',
+        data:{
+            num:1,
+            num2:1
+        },
+        components:{
+            btn:btn
+        },
+        methods: {
+            add(arr,e) {
+                console.log(e.clientX)
+                return this.num += parseInt(arr)
+            },
+            ntv(){
+                console.log('我是封装的按钮组件调用的方法')
+            }
+        }
+    })
+</script>
+</body>
+</html>

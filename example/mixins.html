@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mixins</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Mixins实例</h1>
+<hr/>
+<div id="app">
+    {{num}}
+    <button @click="add">加一</button>
+</div>
+
+<script>
+    //混入，有利于代码的解构
+    let mixin = {
+        updated(){
+            console.log('我是混合进入的，数据更新我就触发了')
+        },
+        created(){
+            this.show()
+        }
+    };
+    Vue.mixin({
+        updated(){
+            console.log('全局混入')
+        }
+    })
+    let app = new Vue({
+        el:'#app',
+        data:{
+            num:1
+        },
+        methods:{
+            add(){
+                return this.num++
+            },
+            show(){
+                alert('混入方法触发了我')
+            }
+        },
+        updated(){
+            console.log('我是内部更新，数据更新我也触发了')
+        },
+        mixins:[mixin]
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extends</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Extends实例</h1>
+<hr/>
+<div id="app">
+    ${num}
+    ${str}
+    <button @click="add">拓展的加一</button>
+</div>
+
+<script>
+
+    //拓展类似于mixin，不过它的优先级小于组件自己
+    let extend = {
+        updated(){
+            console.log('拓展的更新方法')
+        },
+        methods:{
+            add(){
+                this.num++
+                console.log('我是拓展add')
+            }
+        }
+    }
+    let app = new Vue({
+        el:'#app',
+        data:{
+            num:1,
+            str:'我是用${}插值插入的'
+        },
+        delimiters:['${','}'],//改变文本插值
+        methods:{
+            add(){
+                console.log('我是内部的add')
+            }
+        },
+        extends:extend
+    })
+</script>
+</body>
+</html>

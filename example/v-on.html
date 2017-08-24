@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-on实例</h1>
+<hr/>
+<div id="app">
+    <button @click="add">加一分</button>
+    <button @click="remove">减一分</button>
+    <br/>
+    <span v-text="grade"></span>
+    <br/>
+    <input type="text" @keyup.13="show" v-model.lazy="hey">{{hey}}
+    <input type="text" @keyup.13="addnum" v-model="num">
+</div>
+
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            grade:0,
+            hey:'',
+            num:0
+        },
+//        computed:{
+//            morethan0(){
+//                if(this.grade<0){
+//                    this.grade = 0;
+//                }
+//                return this.grade
+//            }
+//        },
+        watch:{
+            grade:function(){
+                if(this.grade<0){
+                    this.grade = 0;
+                }
+                return this.grade
+    }
+        },
+        methods:{
+            add(){
+                return this.grade++
+            },
+            remove(){
+                if(this.grade==0){
+                    this.grade = 1;
+                }
+                return this.grade--
+            },
+            show(){
+                if(this.hey == '你好'){
+                    alert('你也好')
+                }
+            },
+            addnum(){
+                return this.grade += parseInt(this.num)
+            }
+        }
+    })
+</script>
+</body>
+</html>

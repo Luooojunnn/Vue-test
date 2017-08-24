@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-change</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>component-change实例</h1>
+<hr/>
+<div id="app">
+    <component :is="who"></component>
+    <input type="text" v-model="who">
+    <button @click="add">加一</button>
+</div>
+
+<script>
+    let component1 = {
+        template:`<h4>component1内容</h4>`
+    };
+    let component2 = {
+        template:`<h4>component2内容</h4>`
+    };
+    let component3 = {
+        template:`<h4>component3内容</h4>`
+    }
+    let app = new Vue({
+        el:'#app',
+        data:{
+            who:'componentb'
+        },
+        methods:{
+            add(){
+//                if(this.who=='componenta'){
+//                    this.who='componentb'
+//                }
+//                return this.who = this.who=='componentb'?'componentc':'componenta'
+                if(this.who === 'componentb'){
+                    this.who = 'componentc'
+                }else if(this.who === 'componentc'){
+                    this.who = 'componenta'
+                }else{
+                    this.who = 'componentb'
+                }
+            }
+        },
+        components:{
+            'componenta':component1,
+            'componentb':component2,
+            'componentc':component3
+        }
+    })
+</script>
+</body>
+</html>

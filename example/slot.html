@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Slot实例</h1>
+<hr/>
+<div id="app">
+<boke>
+    <span slot="b1">{{lj.address}}</span>
+    <span slot="b2">{{lj.name1}}</span>
+    <span slot="b3">{{lj.type1}}</span>
+</boke>
+</div>
+
+    <template id="template1">
+        <div>
+            <p>博客地址:<slot name="b1"></slot></p>
+            <p>网名:<slot name="b2"></slot></p>
+            <p>类型:<slot name="b3"></slot></p>
+        </div>
+    </template>
+
+<script>
+    let boke = {
+        template:'#template1'
+    }
+    let app = new Vue({
+        el:'#app',
+        data:{
+            lj:{
+                address:'思源大厦',
+                name1:'思源',
+                type1:'服务类型'
+            }
+        },
+        components:{
+            boke:boke
+        }
+    })
+</script>
+</body>
+</html>

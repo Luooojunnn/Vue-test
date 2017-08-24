@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例事件</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>实例事件实例</h1>
+<hr/>
+<div id="app">
+
+    {{num}}
+    <child></child>
+    <button onclick="off()">off掉事件</button>
+</div>
+
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            num:1
+        },
+        components:{'child':{
+            template:`<button @click="chufa">我是子组件的按钮</button>`,//这里是button调用了chufa函数，所以你用this，它会指向button，个人理解
+            methods:{
+                chufa(){
+                    console.log(this)
+                    app.$emit('show','我是子组件触发传过来的参数')
+                }
+            }
+        }}
+
+//        methods:{
+//            showmsg(){
+//                console.log('子组件按钮触发了我')
+//                this.num++
+//            }
+//        }
+    })
+//    app.$emit('show');
+    app.$on('show',function(msg){
+        console.log('子组件按钮触发了我'+'------'+msg)
+        this.num++
+    });
+    app.$once('show',function(){
+        console.info('我是once触发的，我只会被触发一次')
+    })
+    function off(){
+        console.log('off');
+        app.$off('show')
+    }
+
+</script>
+</body>
+</html>

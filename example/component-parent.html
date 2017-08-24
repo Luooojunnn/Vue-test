@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component父子组件关系</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component父子组件关系实例</h1>
+    <hr/>
+    <div id="app">
+        <out></out>
+        <br/>
+        <parent></parent>
+    </div>
+
+    <script>
+        let out = {
+            template:'<p>这是写在vue外部的局部组件</p>'
+        };
+        let child1 = {
+            template:'<span>这是child组件的内容</span>'
+        }
+        let parent = {
+            template:`<h2 style="color:red">
+                这是parent组件的内容 <br/>
+                <child></child>
+            </h2>`,
+            components:{
+                child:child1
+            }
+        };
+
+        let app = new Vue({
+            el:'#app',
+            components:{
+                out:out,
+                parent:parent
+            }
+        })
+    </script>
+</body>
+</html>

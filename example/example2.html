@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例方法</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>实例方法实例</h1>
+    <hr/>
+    <div id="app">
+        <emi></emi>
+        <br/>
+        {{num}} <br/>
+        <button @click="add">加一</button> <br/>
+        <button @click="xz">卸载组件</button> <br/>
+        <button @click="qzxr">强制重新渲染组件</button> <br/>
+        <button @click="xg">数据修改方法</button> <br/>
+    </div>
+
+    <script>
+        let emine = Vue.extend({
+            template:`<em>{{msg}}</em> `,
+            data(){
+                return {
+                    msg:'这是mounted挂载上来的'
+                }
+            }
+        });
+        new emine().$mount('emi');
+
+        let app = new Vue({
+            el:'#app',
+            data:{
+                num:1
+            },
+            methods:{
+               xz(){
+                   this.$destroy();
+                   console.log('卸载函数执行了')
+               },
+                add(){
+                   this.num++
+                },
+                qzxr(){
+                    app.$forceUpdate();
+                    console.log('强制更新函数执行了')
+                },
+                xg(){
+                    this.num = 100,
+                    this.$nextTick(function(){
+                        console.log('num修改完我就触发了')
+                    })
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

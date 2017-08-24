@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-prop</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-prop实例</h1>
+    <hr/>
+    <div id="app">
+        <isred :msg="msg2"></isred>
+        <isred :msg="msg2"></isred>
+        <isred :come-from="msg3"></isred>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                msg2:'这是从父组件传过来的值',
+                msg3:'这是用小驼峰方式获取过来的父组件的值'
+            },
+            components:{
+                'isred':{
+                    props:['msg','comeFrom'],
+                    template:'<p>{{msg}}---{{comeFrom}}</p>'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
